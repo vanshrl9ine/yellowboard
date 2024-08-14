@@ -5,15 +5,12 @@ import { UserButton } from "@clerk/clerk-react";
 import Image from "next/image";
 
 export default function Home() {
-  return(
+  return (
     <div className="flex flex-col gap-y-4">
+      <div>This is a screen for authenticated users only</div>
       <div>
-        This is a screen for authenticated users only
+        <UserButton />
       </div>
-      <div>
-        <UserButton/>
-      </div>
-
     </div>
-  )
+  );
 }
