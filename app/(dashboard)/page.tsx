@@ -1,16 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { UserButton } from "@clerk/clerk-react";
+import { useOrganization, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
+import EmptyOrg from "./_components/empty-org";
 
 export default function Home() {
+  const {organization}=useOrganization();
   return (
-    <div className="flex flex-col gap-y-4">
-      <div>This is a screen for authenticated users only</div>
-      <div>
-        
-      </div>
+    <div className="flex-1 h-[calc(100%-80px)] p-6">
+      {!organization?<EmptyOrg/>:<p>Board list</p>}
+      
     </div>
   );
 }
