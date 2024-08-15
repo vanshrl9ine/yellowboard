@@ -2,6 +2,7 @@
 import { useOrganizationList } from "@clerk/nextjs";
 
 import React from 'react'
+import Item from "./item";
 
 const List = () => {
     const {userMemberships}=useOrganizationList(
@@ -16,9 +17,7 @@ const List = () => {
    <ul className="space-y-4">
       {
         userMemberships.data?.map((mem)=>(
-            <p key={mem.organization.id}>
-                {mem.organization.name}
-            </p>
+            <Item key={mem.organization.id} id={mem.organization.id} name={mem.organization.name} imageUrl={mem.organization.imageUrl}/>
         ))
       }
    </ul>
