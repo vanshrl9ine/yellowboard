@@ -22,6 +22,7 @@ export const get=query({
 
            )
            .collect();
+           //search finished
         }
         else{
             boards=await ctx.db
