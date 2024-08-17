@@ -6,7 +6,7 @@ import { memo } from "react";
 interface CursorProps {
     connectionId: number;
   }
-
+//cursor problem resolved on its own
 export const Cursor = memo(({ connectionId }: CursorProps) => {
     const info = useOther(connectionId, (user) => user?.info);
   
