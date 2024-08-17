@@ -3,16 +3,19 @@ import React, { useCallback, useState } from 'react'
 import {Info} from './info'
 import {Participants} from './participants'
 import {Toolbar} from './toolbar'
-import { useCanRedo, useCanUndo, useHistory, useSelf,useMutation } from '@liveblocks/react/suspense'
+import { useCanRedo, useCanUndo, useHistory, useSelf,useMutation, useStorage } from '@liveblocks/react/suspense'
 import { Camera, CanvasMode, CanvasState } from '@/types/canvas'
 import { CursorsPresence } from './cursors-presence'
 import { pointerEventToCanvasPoint } from '@/lib/utils'
-
+const MAX_LAYERS=100;
 interface CanvasProps{
   boardId:string,
 }
 const Canvas = ({boardId}:CanvasProps) => {
+   const layerIds=useStorage((root)=>root.layerIds);
+   
   
+
    const [canvasState,setCanvasState]=useState<CanvasState>({
     mode:CanvasMode.None,
 
