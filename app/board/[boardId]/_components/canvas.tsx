@@ -22,25 +22,28 @@ const Canvas = ({boardId}:CanvasProps) => {
    const canUndo=useCanUndo();
    const canRedo=useCanRedo();
 
-   const onWheel=useCallback((e:React.WheelEvent)=>{
-    console.log({
-      x:e.deltaX,
-      y:e.deltaY
-    });
-    
-    setCamera((camera)=>({
-      x:camera.x-e.deltaX,
-      y:camera.y-e.deltaY
-    }))
-   },[])
-   const onPointerMove=useMutation(({setMyPresence},e:React.PointerEvent)=>{
-       e.preventDefault();
-       const current=pointerEventToCanvasPoint(e,camera);
+   const handleWheel = useCallback((e: React.WheelEvent) => {
+    setCamera((camera) => ({
+      x: camera.x - e.deltaX,
+      y: camera.y - e.deltaY,
+    }));
+  }, []);
+  const handlePointerMove = useMutation(
+    ({ setMyPresence }, e: React.PointerEvent) => {
+      e.preventDefault();
+
+      const current = pointerEventToCanvasPoint(e, camera);
 
 
-       setMyPresence({cursor:current});
+      setMyPresence({ cursor: current });
+    },
+    [
+      canvasState,
+      
+      camera,
 
-   },[])
+    ]
+  );
    
   
   return (
@@ -60,10 +63,14 @@ const Canvas = ({boardId}:CanvasProps) => {
     />
     <svg 
     className='h-[100vh] w-[100vw]'
-    onPointerMove={onPointerMove}
-    onWheel={onWheel}
+    onPointerMove={handlePointerMove}
+    onWheel={handleWheel}
     >
-      <g>
+      <g
+      style={{
+        transform: `translate(${camera.x}px, ${camera.y}px)`,
+      }}
+      >
          <CursorsPresence/>
       </g>
     </svg>

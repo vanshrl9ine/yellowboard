@@ -3,32 +3,24 @@ import { memo } from "react";
 import { useOthersConnectionIds } from "@liveblocks/react/suspense";
 import { Cursor } from "./cursor";
 
-const Cursors=()=>{
-    const ids=useOthersConnectionIds();
-    return(
+const Cursors = () => {
+    const ids = useOthersConnectionIds();
+  
+    return (
       <>
-       {
-         ids.map((connectionId)=>(
-            <Cursor
-            key={connectionId}
-            connectionId={connectionId}
-            
-            />
-         ))
-
-       }
+        {ids.map((id) => (
+          <Cursor key={id} connectionId={id} />
+        ))}
       </>
     );
-}
-export const CursorsPresence=memo(()=>{
-  return(
-    <>
-    <p>
-        {/* TODO:draft pencil */}
-        <Cursors/>
-    </p>
-    </>
-  )
-
-})
-CursorsPresence.displayName="CursorsPresence";
+  };
+  export const CursorsPresence = memo(() => {
+    return (
+      <>
+      
+        <Cursors />
+      </>
+    );
+  });
+  
+  CursorsPresence.displayName = "CursorPresence";

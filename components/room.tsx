@@ -13,16 +13,16 @@ import {
 interface RoomProps{
     children:React.ReactNode,
     roomId:string;
-    fallback:NonNullable<ReactNode> | null
+    fallback:NonNullable<React.ReactNode> | null
 }
 export function Room({ children,roomId,fallback }: RoomProps) {
   // const info = useSelf((me) => me.info);
   // console.log(info);
   
   return (
-    <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
+    <LiveblocksProvider authEndpoint="/api/liveblocks-auth" throttle={16}>
       <RoomProvider id={roomId} initialPresence={{cursor:null,}}>
-        <ClientSideSuspense fallback={<div className='h-full flex flex-col items-center justify-center'><Loading/></div>}>
+        <ClientSideSuspense fallback={fallback}>
           {children}
         </ClientSideSuspense>
       </RoomProvider>

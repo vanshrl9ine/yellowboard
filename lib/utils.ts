@@ -10,10 +10,10 @@ export const connectionIdToColor = (connectionId: number) => {
   return COLORS[connectionId % COLORS.length];
 };
 
-export const pointerEventToCanvasPoint = (
+export function pointerEventToCanvasPoint(
   e: React.PointerEvent,
   camera: Camera
-) => {
+) {
   return {
     x: Math.round(e.clientX) - camera.x,
     y: Math.round(e.clientY) - camera.y,
