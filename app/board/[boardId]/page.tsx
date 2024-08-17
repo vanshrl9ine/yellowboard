@@ -1,5 +1,5 @@
 import React from 'react'
-import Canvas from './_components/canvas'
+import {Canvas} from './_components/canvas'
 import { Room } from '@/components/room'
 import { Divide } from 'lucide-react';
 import { Loading } from '@/components/auth/loading';
