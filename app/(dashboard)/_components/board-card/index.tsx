@@ -61,7 +61,6 @@ export const BoardCard = ({
                 alt={title}
                 fill
                 className="object-fit"
-
                 />
                 <Overlay/>
                 <Actions 
