@@ -22,7 +22,10 @@ export const ConvexClientProvider = ({
     <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
       <Authenticated>{children}</Authenticated>
       <AuthLoading>
+        <div className="h-full flex flex-col items-center justify-center">
         <Loading />
+        </div>
+       
       </AuthLoading>
     </ConvexProviderWithClerk>
   </ClerkProvider>

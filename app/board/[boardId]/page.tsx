@@ -2,7 +2,7 @@ import React from 'react'
 import Canvas from './_components/canvas'
 import { Room } from '@/components/room'
 import { Divide } from 'lucide-react';
-import Loading from './_components/loading';
+import { Loading } from '@/components/auth/loading';
 interface BoardIdPageProps{
   params:{
     boardId:string,
@@ -12,8 +12,8 @@ interface BoardIdPageProps{
 const BoardIdPage = ({params,}:BoardIdPageProps) => {
   
   return (
-    <div>
-      <Room roomId={params.boardId} fallback={<Loading/>}>
+    <div className='h-full flex flex-col items-center justify-center'>
+      <Room roomId={params.boardId} fallback={<div className='h-full flex flex-col items-center justify-center'><Loading/></div>}>
       <Canvas boardId={params.boardId}/>
       </Room>
        
