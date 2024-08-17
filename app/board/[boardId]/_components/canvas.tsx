@@ -47,6 +47,7 @@ interface CanvasProps {
 }
 
 export const Canvas = ({ boardId }: CanvasProps) => {
+  const deleteLayers = useDeleteLayers();
   const layerIds = useStorage((root) => root.layerIds);
   const pencilDraft = useSelf((self) => self.presence.pencilDraft);
 
@@ -405,7 +406,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [setCanvasState, camera, history, canvasState.mode]
   );
 
-  const deleteLayers = useDeleteLayers();
+ 
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
